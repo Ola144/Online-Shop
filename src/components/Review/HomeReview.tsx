@@ -8,8 +8,6 @@ import { useNavigate } from "react-router";
 const databaseId = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 const collectionId = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
 
-console.log(databaseId, collectionId);
-
 const HomeReview = () => {
   const [review, setReview] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
