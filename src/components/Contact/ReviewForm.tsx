@@ -135,7 +135,7 @@ const ReviewForm = () => {
                     id="review"
                     className=" md:w-full w-full"
                     value={field.value}
-                    onChange={(content, delta, source, editor) => {
+                    onChange={(content, editor: any) => {
                       field.onChange(content);
                       setValue("plainReview", editor.getText());
                     }}

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router";
 
-const ProctectedRoute = ({ children }) => {
+const ProctectedRoute = ({ children }: any) => {
   let user;
   const localUser = localStorage.getItem("users");
   if (localUser != null) user = JSON.parse(localUser);

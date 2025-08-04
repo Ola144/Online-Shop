@@ -7,13 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, fireDB } from "../../firebase/firebaseConfig";
-import {
-  collection,
-  onSnapshot,
-  query,
-  QuerySnapshot,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const Login = () => {

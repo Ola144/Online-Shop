@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { auth, fireDB } from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const Signup = () => {

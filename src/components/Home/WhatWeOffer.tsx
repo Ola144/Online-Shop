@@ -1,5 +1,3 @@
-import React from "react";
-
 const WhatWeOffer = () => {
   return (
     <div className="w-full px-10 py-5 my-5 bg-gradient-to-tr from-purple-400 to-purple-500 ">

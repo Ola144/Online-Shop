@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 import Loader from "../Loader";
 import type { RootState } from "../../store";
-import { toast } from "react-toastify";
 import { deleteCartItem, fetchCartItems } from "../../store/cart-slice-api";
 import { useEffect } from "react";
 import Order from "../Order/Order";

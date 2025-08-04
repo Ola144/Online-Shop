@@ -133,7 +133,7 @@ const ContactForm = () => {
                     id="message"
                     className=" md:w-full w-full"
                     value={field.value}
-                    onChange={(content, delta, source, editor) => {
+                    onChange={(content, editor: any) => {
                       field.onChange(content);
                       setValue("plainMessage", editor.getText());
                     }}
