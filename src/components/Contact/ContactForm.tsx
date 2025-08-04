@@ -1,7 +1,8 @@
 import { Controller, useForm } from "react-hook-form";
 import ReactQuill from "react-quill-new";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendContact } from "../../store/contact-slice";
+import type { RootState } from "../../store";
 
 interface IContact {
   fullName: string;
@@ -28,6 +29,7 @@ const ContactForm = () => {
     },
   });
   const dispatch = useDispatch<any>();
+  const { loading } = useSelector((state: RootState) => state.contact);
 
   const submit = (contactData: IContact) => {
     dispatch(sendContact(contactData));
@@ -133,7 +135,7 @@ const ContactForm = () => {
                     id="message"
                     className=" md:w-full w-full"
                     value={field.value}
-                    onChange={(content, editor: any) => {
+                    onChange={(content, _delta, _source, editor: any) => {
                       field.onChange(content);
                       setValue("plainMessage", editor.getText());
                     }}
@@ -150,8 +152,13 @@ const ContactForm = () => {
           </div>
           <div className="">
             <button
-              className="w-full bg-gray-500 hover:bg-gray-400 text-white py-3 rounded-lg"
+              className={
+                loading
+                  ? "w-full bg-gray-400 hover:bg-gray-400 text-white py-3 rounded-lg cursor-no-drop"
+                  : "w-full bg-gray-500 hover:bg-gray-400 text-white py-3 rounded-lg"
+              }
               type="submit"
+              disabled={loading}
             >
               Submit
             </button>

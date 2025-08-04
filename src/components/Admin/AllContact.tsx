@@ -29,7 +29,7 @@ const AllContact = () => {
             {loading ? (
               <Loader />
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mx-auto md:px-10 px-10 sm:px-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mx-auto md:px-10 px-10 sm:px-5 gap-5">
                 {contactList.map((item) => (
                   <div
                     key={item.contactId}

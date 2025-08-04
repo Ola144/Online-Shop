@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Controller, useForm } from "react-hook-form";
 import ReactQuill from "react-quill-new";
-import { useDispatch } from "react-redux";
-import { fetchLoading, fetchNotLoading } from "../../store/review-slice";
 import { databases, storage } from "../../appwrite/appwrite";
 import { ID } from "appwrite";
 import { toast } from "react-toastify";
@@ -31,11 +29,11 @@ const ReviewForm = () => {
     },
   });
 
-  const dispatch = useDispatch<any>();
   const [imageFile, setImageFile] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const submit = async (reviewData: IReview) => {
-    dispatch(fetchLoading());
+    setLoading(true);
 
     try {
       if (!imageFile) {
@@ -63,10 +61,10 @@ const ReviewForm = () => {
         }
       );
       toast.success("Review Sent Successfully!");
-      dispatch(fetchNotLoading());
+      setLoading(false);
     } catch (error: any) {
       toast.error(error.message);
-      dispatch(fetchNotLoading());
+      setLoading(false);
       console.log(error);
     }
   };
@@ -111,7 +109,6 @@ const ReviewForm = () => {
               id="userImg"
               onChange={(e: any) => {
                 setImageFile(e.target.files[0]);
-                console.log(imageFile);
               }}
               className="border-2 border-gray-500 rounded-lg outline-none w-full py-2 px-3"
               placeholder="Your Image"
@@ -135,7 +132,7 @@ const ReviewForm = () => {
                     id="review"
                     className=" md:w-full w-full"
                     value={field.value}
-                    onChange={(content, editor: any) => {
+                    onChange={(content, _delta, _source, editor) => {
                       field.onChange(content);
                       setValue("plainReview", editor.getText());
                     }}
@@ -152,8 +149,13 @@ const ReviewForm = () => {
           </div>
           <div className="">
             <button
-              className="w-full bg-gray-500 hover:bg-gray-400 text-white py-3 rounded-lg"
+              className={
+                loading
+                  ? "w-full bg-gray-400 hover:bg-gray-400 text-white py-3 rounded-lg cursor-no-drop"
+                  : "w-full bg-gray-500 hover:bg-gray-400 text-white py-3 rounded-lg"
+              }
               type="submit"
+              disabled={loading}
             >
               Submit
             </button>
