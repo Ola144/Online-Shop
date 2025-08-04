@@ -103,10 +103,16 @@
 }
 
 @media (min-width: 767px) {
-  .navbar {
+  .customer {
+    width: 600px !important;
+    background: none !important;
+  }
+
+  .admin {
     width: 560px !important;
     background: none !important;
   }
+
   .shadowBg {
     background-color: none !important;
   }
@@ -160,18 +166,31 @@
     transition: 0.3s ease-in-out;
   }
 
-  .navbar {
+  .admin {
     background: white;
     padding-top: 20px;
     padding-right: 20px;
     top: 40px;
   }
-  .navbar.hideMenuNav {
+  .customer {
+    background: white;
+    padding-top: 20px;
+    padding-right: 20px;
+    top: 40px;
+  }
+  .admin.hideMenuNav {
+    right: -340px !important;
+    transition: 0.3s ease-out all;
+  }
+  .customer.hideMenuNav {
     right: -340px !important;
     transition: 0.3s ease-out all;
   }
 
-  .navbar.showMenuNav {
+  .admin.showMenuNav {
+    right: 0;
+  }
+  .customer.showMenuNav {
     right: 0;
   }
 }

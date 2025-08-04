@@ -54,7 +54,11 @@ const Navbar = () => {
           onClick={() => toggleNavbar()}
         ></div>
         <div
-          className="md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen navbar hideMenuNav"
+          className={
+            loggedUserData.role === "Customer"
+              ? "md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen customer hideMenuNav"
+              : "md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen admin hideMenuNav"
+          }
           ref={navbarRef}
         >
           <div className="relative md:mb-0 mb-5">

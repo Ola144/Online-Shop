@@ -83,7 +83,7 @@ const CategoryPage = () => {
           </h1>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 px-16 sm:px-0 md:px-0 gap-3 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 px-16 sm:px-5 md:px-10 gap-3 mt-5">
           <>
             {product.map((product: any) => {
               return (
