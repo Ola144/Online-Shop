@@ -1,0 +1,15 @@
+import { Navigate } from "react-router";
+
+const ProtectAdmin = ({ children }) => {
+  let user;
+  const localUser = localStorage.getItem("users");
+  if (localUser != null) user = JSON.parse(localUser);
+
+  if (user.role === "Admin") {
+    return children;
+  } else {
+    return <Navigate to={"/"} />;
+  }
+};
+
+export default ProtectAdmin;
