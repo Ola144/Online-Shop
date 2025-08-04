@@ -9,6 +9,7 @@ function MyOrder() {
   const { orderItems, loading, status, errors } = useSelector(
     (state: RootState) => state.order
   );
+
   const dispatch = useDispatch<any>();
 
   const localUser = localStorage.getItem("users");
@@ -58,23 +59,22 @@ function MyOrder() {
                             return (
                               <div
                                 className="flex items-start justify-center gap-3 m-auto lg:m-0 md:m-0 shadow-lg px-10 py-2 rounded-lg bg-gray-300 w-72"
-                                key={order.productId}
+                                key={order.cartId}
                               >
                                 <img
-                                  src={order.imgUrl}
-                                  alt={order.name}
-                                  className="w-32 rounded-lg"
+                                  src={order.cartItemData.productImgUrl}
+                                  alt={order.cartItemData.productName}
+                                  className="w-32 h-32 rounded-lg"
                                 />
                                 <div className="">
                                   <p className="text-white font-bold text-sm">
-                                    Name:
-                                    {order.name}
+                                    Name: {order.cartItemData.productName}
                                   </p>
                                   <p className="text-white font-bold text-sm">
-                                    Price: ${order.price}
+                                    Price: ${order.cartItemData.productPrice}
                                   </p>
                                   <p className="text-white font-bold text-sm">
-                                    Quantity: {order.quantity}
+                                    Quantity: {order.cartItemData.productQty}
                                   </p>
                                 </div>
                               </div>

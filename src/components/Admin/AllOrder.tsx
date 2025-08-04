@@ -50,13 +50,12 @@ const AllOrder = () => {
                               >
                                 <img
                                   src={order.cartItemData.productImgUrl}
-                                  alt={order.name}
-                                  className="w-32 rounded-lg"
+                                  alt={order.cartItemData.productName}
+                                  className="w-32 h-32 rounded-lg"
                                 />
                                 <div className="">
                                   <p className="text-white font-bold text-sm">
-                                    Name:
-                                    {order.cartItemData.productName}
+                                    Name: {order.cartItemData.productName}
                                   </p>
                                   <p className="text-white font-bold text-sm">
                                     Price: ${order.cartItemData.productPrice}
