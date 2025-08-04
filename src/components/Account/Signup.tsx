@@ -40,7 +40,6 @@ const Signup = () => {
           month: "short",
           day: "2-digit",
           year: "numeric",
-          timeStyle: "full",
         }),
       };
 
@@ -54,8 +53,9 @@ const Signup = () => {
       navigate("/login");
       setLoader(false);
     } catch (error: any) {
-      toast.error("Something went wrong. Try again!");
+      toast.error("Something went wrong. Try again!" + error.message);
       setLoader(false);
+      console.log(error.message);
     }
   };
 
