@@ -6,7 +6,16 @@ import { closeOrderCard } from "../../store/order-slice";
 
 const OrderCard = () => {
   const { showOrderCard } = useSelector((state: RootState) => state.order);
+  const { cartItems } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch<any>();
+
+  const totalPrice = cartItems
+    ?.map((item: any) => Number(item.productPrice) * item.productQty)
+    .reduce((prevValue: any, currValue: any) => prevValue + currValue, 0);
+
+  let grandTotalPriceWithTax = 0;
+
+  grandTotalPriceWithTax = (totalPrice + 100).toFixed(2);
 
   return (
     <div>
@@ -23,7 +32,10 @@ const OrderCard = () => {
               Thank you for your patronage.
             </p>
             <p className="my-2 text-gray-500 text-muted">
-              Click on button below to make payment
+              Click on button below to make payment of{" "}
+              <span className="font-black text-red-500">
+                ${grandTotalPriceWithTax}
+              </span>
             </p>
             <div className="flex justify-center items-center">
               <Payment />

@@ -63,6 +63,11 @@ const Footer = () => {
                 CONTACT
               </Link>
             </p>
+            <p className="mb-2 relative w-fit">
+              <Link className="footerLink w-fit" to="/review">
+                REVIEWS
+              </Link>
+            </p>
           </div>
         </div>
         <div className="mx-auto sm:mx-0 text-center sm:text-left">

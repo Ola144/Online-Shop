@@ -89,7 +89,7 @@ function MyOrder() {
                       </div>
                       <div className="col-span-1 md:col-span-1 md:border-l-2 border-l-gray-500 py-3 px-1 lg:w-full w-full bg-gray-400 text-white">
                         <p>Total Price: ${item.totalPrice}</p>
-                        <p>Tax: 5%</p>
+                        <p>Tax: $100</p>
                         <p>Delivery Fee: Free</p>
                         <p>Grand Total: ${item.grandTotal}</p>
                         <div className="mt-10 flex justify-end">
