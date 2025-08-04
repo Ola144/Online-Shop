@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store";
 import type { IUser } from "../../model/User";
 import Loader from "../Loader";
-import { deleteOrder } from "../../store/order-slice";
+import { deleteOrder, fetchOrderItems } from "../../store/order-slice";
+import { useEffect } from "react";
 
 function MyOrder() {
   const { orderItems, loading, status, errors } = useSelector(
@@ -17,6 +18,10 @@ function MyOrder() {
   if (localUser != null) {
     loggedUserData = JSON.parse(localUser);
   }
+
+  useEffect(() => {
+    dispatch(fetchOrderItems());
+  }, [dispatch]);
 
   const removeMyOrder = (id: any) => {
     dispatch(deleteOrder(id));

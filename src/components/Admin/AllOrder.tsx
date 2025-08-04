@@ -10,7 +10,6 @@ const AllOrder = () => {
   const { allOrderItems, errors, status, loading } = useSelector(
     (state: RootState) => state.order
   );
-  console.log(allOrderItems);
 
   const removeMyOrder = (id: any) => {
     dispatch(deleteOrder(id));
@@ -76,7 +75,7 @@ const AllOrder = () => {
                         <p>Delivery Fee: Free</p>
                         <p>Grand Total: ${item.grandTotal}</p>
                         <div className="mt-10 flex justify-end">
-                          {!loading ? (
+                          {loading ? (
                             <button
                               className=" bg-red-500 hover:bg-red-400 text-white py-2 px-3 rounded-lg"
                               type="button"
