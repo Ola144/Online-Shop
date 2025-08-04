@@ -16,10 +16,7 @@ const Order = () => {
   }, [dispatch]);
 
   const totalPrice = cartItems
-    ?.map(
-      (item: any) =>
-        Number(item.cartItemData.productPrice) * item.cartItemData.productQty
-    )
+    ?.map((item: any) => Number(item.productPrice) * item.productQty)
     .reduce((prevValue: any, currValue: any) => prevValue + currValue, 0);
 
   // let price = 0;

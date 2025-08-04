@@ -10,6 +10,7 @@ const AllOrder = () => {
   const { allOrderItems, errors, status, loading } = useSelector(
     (state: RootState) => state.order
   );
+  console.log(allOrderItems);
 
   const removeMyOrder = (id: any) => {
     dispatch(deleteOrder(id));
@@ -46,22 +47,22 @@ const AllOrder = () => {
                             return (
                               <div
                                 className="flex items-start justify-center gap-3 m-auto lg:m-0 md:m-0 shadow-lg px-10 py-2 rounded-lg bg-gray-300 w-72"
-                                key={order.cartItemData.productId}
+                                key={order.cartId}
                               >
                                 <img
-                                  src={order.cartItemData.productImgUrl}
-                                  alt={order.cartItemData.productName}
+                                  src={order.productImgUrl}
+                                  alt={order.productName}
                                   className="w-32 h-32 rounded-lg"
                                 />
                                 <div className="">
                                   <p className="text-white font-bold text-sm">
-                                    Name: {order.cartItemData.productName}
+                                    Name: {order.productName}
                                   </p>
                                   <p className="text-white font-bold text-sm">
-                                    Price: ${order.cartItemData.productPrice}
+                                    Price: ${order.productPrice}
                                   </p>
                                   <p className="text-white font-bold text-sm">
-                                    Quantity: {order.cartItemData.productQty}
+                                    Quantity: {order.productQty}
                                   </p>
                                 </div>
                               </div>
@@ -79,7 +80,7 @@ const AllOrder = () => {
                             <button
                               className=" bg-red-500 hover:bg-red-400 text-white py-2 px-3 rounded-lg"
                               type="button"
-                              onClick={() => removeMyOrder(item.id)}
+                              onClick={() => removeMyOrder(item.orderId)}
                             >
                               Delete Order
                             </button>

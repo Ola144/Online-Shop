@@ -49,27 +49,47 @@ const cartSlice = createSlice({
     },
     increaseQty(state, action) {
       const id = action.payload;
-      const existeingItem = state.cartItems.find((item: any) => item.id === id);
-      if (existeingItem) {
-        existeingItem.cartItemData.productQty++;
+      const existingItem = state?.cartItems.find(
+        (item: any) => item.cartId === id
+      );
+      if (existingItem) {
+        existingItem.productQty += 1;
       }
     },
     decreaseQty(state, action) {
       const id = action.payload;
-      const existeingItem = state.cartItems.find((item: any) => item.id === id);
-      if (existeingItem) {
-        if (existeingItem.cartItemData.productQty > 1) {
-          existeingItem.cartItemData.productQty--;
-        }
+      const existingItem = state?.cartItems.find(
+        (item: any) => item.cartId === id
+      );
+      if (existingItem && existingItem.productQty > 1) {
+        existingItem.productQty -= 1;
       }
     },
   },
 });
 
-export const { fetchLoading, fetchSuccess, fetchError, fetchNotLoading } =
-  cartSlice.actions;
+export const {
+  fetchLoading,
+  fetchSuccess,
+  fetchError,
+  fetchNotLoading,
+  increaseQty,
+  decreaseQty,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+export const increaseQuantity =
+  (id: string): AppThunk =>
+  (dispatch: any) => {
+    dispatch(increaseQty(id));
+  };
+
+export const decreaseQuantity =
+  (id: string): AppThunk =>
+  (dispatch: any) => {
+    dispatch(decreaseQty(id));
+  };
 
 // Listener thunk
 export const fetchCartItems = (): AppThunk => (dispatch: any) => {
@@ -134,7 +154,7 @@ export const createCartItem =
     const cartItemRef = push(ref(database, "cartItems"));
     const id = cartItemRef.key;
     await set(cartItemRef, {
-      cartItemData,
+      ...cartItemData,
       createdAt: new Date().toLocaleString("en-US", {
         day: "2-digit",
         month: "2-digit",

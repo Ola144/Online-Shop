@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../../store/cart-slice";
 import Loader from "../Loader";
 import type { RootState } from "../../store";
-import { deleteCartItem, fetchCartItems } from "../../store/cart-slice-api";
+import {
+  decreaseQuantity,
+  deleteCartItem,
+  fetchCartItems,
+  increaseQuantity,
+} from "../../store/cart-slice-api";
 import { useEffect } from "react";
 import Order from "../Order/Order";
 import OrderCard from "../Order/OrderCard";
@@ -17,14 +21,13 @@ const Cart = () => {
     dispatch(fetchCartItems());
   }, [dispatch]);
 
-  const increaseQty = (id: any) => {
-    dispatch(cartActions.increaseQty(id));
+  const increaseQty = (id: string) => {
+    dispatch(increaseQuantity(id));
   };
 
-  const decreaseQty = (id: any) => {
-    dispatch(cartActions.decreaseQty(id));
+  const decreaseQty = (id: string) => {
+    dispatch(decreaseQuantity(id));
   };
-
   const removeCartItem = (id: any) => {
     dispatch(deleteCartItem(id));
   };
@@ -56,16 +59,16 @@ const Cart = () => {
                               key={item.cartId}
                             >
                               <img
-                                src={item.cartItemData.productImgUrl}
-                                alt={item.cartItemData.productName}
+                                src={item.productImgUrl}
+                                alt={item.productName}
                                 className="w-32 h-32 rounded-lg"
                               />
                               <div className="">
                                 <p className="text-white font-bold text-sm">
-                                  Name: {item.cartItemData.productName}
+                                  Name: {item.productName}
                                 </p>
                                 <p className="text-white font-bold text-sm">
-                                  Price: ${item.cartItemData.productPrice}
+                                  Price: ${item.productPrice}
                                 </p>
                                 <p className="text-white font-bold md:text-sm sm:text-xs text-sm">
                                   Quantity:{" "}
@@ -75,7 +78,7 @@ const Cart = () => {
                                   >
                                     -
                                   </button>{" "}
-                                  {item.cartItemData.productQty}{" "}
+                                  {item.productQty}{" "}
                                   <button
                                     className="w-auto px-2 py-1 bg-white text-black font-bold rounded-lg"
                                     onClick={() => increaseQty(item.cartId)}

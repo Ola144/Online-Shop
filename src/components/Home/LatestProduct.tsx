@@ -103,8 +103,7 @@ const LatestProduct = () => {
                     <div className="flex justify-center items-center gap-1">
                       <div>
                         {cartItems?.some(
-                          (p: any) =>
-                            p.cartItemData.productId === product.productId
+                          (p: any) => p.productId === product.productId
                         ) ? (
                           <button
                             className="mt-5 w-auto bg-red-500 hover:bg-red-400  text-white py-2 px-4 rounded-lg sm:text-xs md:text-sm"
