@@ -4,8 +4,8 @@ import type { AppThunk } from ".";
 import { toast } from "react-toastify";
 import { databases } from "../appwrite/appwrite";
 
-const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
-const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
+const databaseId = import.meta.env.VITE_APPWRITE_DATABASE_ID;
+const collectionId = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
 
 interface IReview {
   reviewList: any[];
@@ -44,8 +44,8 @@ export const getReview = (): AppThunk => async (dispatch: any) => {
 
   try {
     const response = await databases.listDocuments(
-      DATABASE_ID, // Database ID
-      COLLECTION_ID // Collection ID
+      databaseId, // Database ID
+      collectionId // Collection ID
     );
     const data = response.documents || [];
     const dataArr = Object.values(data);
@@ -64,8 +64,8 @@ export const deleteRewiew =
 
     try {
       await databases.deleteDocument(
-        DATABASE_ID, // Database ID
-        COLLECTION_ID, // Collection ID
+        databaseId, // Database ID
+        collectionId, // Collection ID
         reviewId
       );
       dispatch(getReview());

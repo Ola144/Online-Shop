@@ -5,6 +5,11 @@ import { Query } from "appwrite";
 import Loader from "../Loader";
 import { useNavigate } from "react-router";
 
+const databaseId = import.meta.env.VITE_APPWRITE_DATABASE_ID;
+const collectionId = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
+
+console.log(databaseId, collectionId);
+
 const HomeReview = () => {
   const [review, setReview] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,8 +25,8 @@ const HomeReview = () => {
 
     try {
       const response = await databases.listDocuments(
-        "688e272a003b99b5dc39", // Database ID
-        "688e2a0e001606ab412e", // Collection ID
+        databaseId, // Database ID
+        collectionId, // Collection ID
         [Query.orderDesc("$createdAt"), Query.limit(4)]
       );
       const data = response.documents || [];
