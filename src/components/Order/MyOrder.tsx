@@ -4,7 +4,6 @@ import type { RootState } from "../../store";
 import Loader from "../Loader";
 import { deleteOrder, fetchOrderItems } from "../../store/order-slice";
 import { useEffect } from "react";
-import { useUser } from "../../context/UserContext";
 import type { IUser } from "../../model/User";
 
 function MyOrder() {
