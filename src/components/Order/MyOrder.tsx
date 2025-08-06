@@ -5,6 +5,7 @@ import Loader from "../Loader";
 import { deleteOrder, fetchOrderItems } from "../../store/order-slice";
 import { useEffect } from "react";
 import { useUser } from "../../context/UserContext";
+import type { IUser } from "../../model/User";
 
 function MyOrder() {
   const { orderItems, loading, status, errors } = useSelector(
@@ -13,7 +14,11 @@ function MyOrder() {
 
   const dispatch = useDispatch<any>();
 
-  const { users } = useUser();
+  const localUser = localStorage.getItem("onlineShopUsers");
+  let loggedUserData: IUser = {};
+  if (localUser != null) {
+    loggedUserData = JSON.parse(localUser);
+  }
 
   useEffect(() => {
     dispatch(fetchOrderItems());
@@ -26,11 +31,11 @@ function MyOrder() {
   return (
     <>
       <div className="w-3/4 py-5 text-center mt-20 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white">
-        <p>Name: {users.name}</p>
-        <p>Email: {users.email}</p>
-        <p>Role: {users.role}</p>
-        <p>Password: {users.password}</p>
-        <p>Date: {users.date}</p>
+        <p>Name: {loggedUserData.name}</p>
+        <p>Email: {loggedUserData.email}</p>
+        <p>Role: {loggedUserData.role}</p>
+        <p>Password: {loggedUserData.password}</p>
+        <p>Date: {loggedUserData.date}</p>
       </div>
 
       {status === "loading" && <Loader />}
