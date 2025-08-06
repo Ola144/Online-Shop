@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router";
-// import { useDispatch } from "react-redux";
-// import { authActions } from "../store/auth-slice";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -12,19 +9,13 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
-
-  // const [loginObj, setLoginObj] = useState<UserModel>(new UserModel());
   const [loader, setLoader] = useState<boolean>(false);
-
-  // const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  // const dispatch = useDispatch();
 
   const loginUser = async (data: any) => {
     setLoader(true);
@@ -44,8 +35,11 @@ const Login = () => {
         const data = onSnapshot(q, (QuerySnapshot) => {
           let user;
           QuerySnapshot.forEach((doc) => (user = doc.data()));
-          localStorage.setItem("users", JSON.stringify(user));
-          localStorage.setItem("userId", JSON.stringify(users.user.uid));
+          localStorage.setItem("onlineShopUsers", JSON.stringify(user));
+          localStorage.setItem(
+            "onlineShopUserId",
+            JSON.stringify(users.user.uid)
+          );
 
           navigate("/");
         });
@@ -59,8 +53,6 @@ const Login = () => {
       toast.error(error.message);
       setLoader(false);
     }
-
-    // navigate("/", { state: { isLoggedIn: true } });
   };
 
   return (

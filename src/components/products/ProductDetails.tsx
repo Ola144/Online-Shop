@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCartItem, deleteCartItem } from "../../store/cart-slice-api";
 import type { RootState } from "../../store";
 import RelatedProduct from "./RelatedProduct";
+import { addLikeToDB, removerLikeFromDB } from "../../store/like-slice";
+import { useUser } from "../../context/UserContext";
 
 const ProductDetails = () => {
   const { id }: any = useParams();
@@ -26,6 +28,8 @@ const ProductDetails = () => {
 
   const dispatch = useDispatch<any>();
   const { cartItems } = useSelector((state: RootState) => state.cart);
+  const { likeList } = useSelector((state: RootState) => state.like);
+  const { userId } = useUser();
 
   useEffect(() => {
     geProductDetails();
@@ -63,6 +67,18 @@ const ProductDetails = () => {
       console.log(error);
       toast.error(error.message);
     }
+  };
+
+  const handleLike = (productId: string) => {
+    dispatch(addLikeToDB(productId));
+  };
+
+  const handleUnlike = () => {
+    let id: any;
+    likeList.find((item) => {
+      id = item.value.likeId;
+    });
+    dispatch(removerLikeFromDB(id));
   };
 
   const addToCart = (item: any) => {
@@ -113,12 +129,29 @@ const ProductDetails = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:gap-20 gap-10"
               key={item.productId}
             >
-              <div>
+              <div className="relative">
                 <img
                   src={item.productImgUrl}
                   alt={item.productName}
                   className="w-full rounded-md"
                 />
+                <p className="text-xl text-red-500 font-black absolute right-0 bottom-0 bg-white p-1 rounded-tl-lg">
+                  {likeList.some(
+                    (like: any) =>
+                      like.value.productId === item.productId &&
+                      like.value.userId === userId
+                  ) ? (
+                    <i
+                      className="fa fa-heart cursor-pointer"
+                      onClick={() => handleUnlike()}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa fa-heart-o cursor-pointer"
+                      onClick={() => handleLike(item.productId)}
+                    ></i>
+                  )}
+                </p>
               </div>
               <div className="text-gray-500 text-lg">
                 <p className="mb-2 font-black text-2xl">{item.productName} </p>
@@ -127,9 +160,7 @@ const ProductDetails = () => {
                 <p className="mb-2 text-justify" style={{ lineHeight: 2 }}>
                   {item.productDesc}{" "}
                 </p>
-                {cartItems.find(
-                  (p: any) => p.cartItemData.productId === item.productId
-                ) ? (
+                {cartItems.find((p: any) => p.productId === item.productId) ? (
                   <button
                     className="w-full bg-red-500 hover:bg-red-400 text-white py-4 rounded-lg mt-3 "
                     onClick={() => deleteFromCart()}

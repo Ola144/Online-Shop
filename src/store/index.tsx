@@ -7,6 +7,7 @@ import productSlice from "./product-slice";
 import categorySlice from "./category-slice";
 import reviewSlice from "./review-slice";
 import contactSlice from "./contact-slice";
+import likeSlice from "./like-slice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     category: categorySlice,
     review: reviewSlice,
     contact: contactSlice,
+    like: likeSlice,
   },
 });
 

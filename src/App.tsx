@@ -26,6 +26,7 @@ import Contact from "./components/Contact/Contact";
 import Review from "./components/Review/Review";
 import { getReview } from "./store/review-slice";
 import { getContact } from "./store/contact-slice";
+import { fetchUserLikes } from "./store/like-slice";
 
 function App({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch<any>();
@@ -35,6 +36,7 @@ function App({ children }: { children: React.ReactNode }) {
     const unsubscribeOrder = dispatch(fetchOrderItems()) as () => void;
     const unsubscribeAllOrder = dispatch(fetchAllOrderItems()) as () => void;
     const unsubscribeAllUser = dispatch(fetchAllUsers()) as () => void;
+    const unsubscribeLike = dispatch(fetchUserLikes()) as () => void;
     dispatch(fetchCategory());
     dispatch(getReview());
     dispatch(getContact());
@@ -43,7 +45,8 @@ function App({ children }: { children: React.ReactNode }) {
       unsubscribeCart(),
       unsubscribeOrder(),
       unsubscribeAllOrder(),
-      unsubscribeAllUser()
+      unsubscribeAllUser(),
+      unsubscribeLike()
     );
   }, [dispatch]);
 

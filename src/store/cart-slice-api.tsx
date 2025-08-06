@@ -96,7 +96,7 @@ export const fetchCartItems = (): AppThunk => (dispatch: any) => {
   dispatch(fetchLoading());
 
   try {
-    const storedUser = localStorage.getItem("userId");
+    const storedUser = localStorage.getItem("onlineShopUserId");
     let userId;
     if (storedUser != null) {
       userId = JSON.parse(storedUser);
@@ -168,11 +168,11 @@ export const createCartItem =
 
 // Thunk to delete an item
 export const deleteCartItem =
-  (productId: string): AppThunk =>
+  (cartId: string): AppThunk =>
   async () => {
     //Realtime Database
     const database = getDatabase();
-    await remove(ref(database, `cartItems/${productId}`));
+    await remove(ref(database, `cartItems/${cartId}`));
     toast.success("Product Deleted Successfully!");
 
     // Firestore Database

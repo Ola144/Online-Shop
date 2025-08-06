@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store";
-import type { IUser } from "../../model/User";
 import Loader from "../Loader";
 import { deleteOrder, fetchOrderItems } from "../../store/order-slice";
 import { useEffect } from "react";
+import { useUser } from "../../context/UserContext";
 
 function MyOrder() {
   const { orderItems, loading, status, errors } = useSelector(
@@ -13,11 +13,7 @@ function MyOrder() {
 
   const dispatch = useDispatch<any>();
 
-  const localUser = localStorage.getItem("users");
-  let loggedUserData: IUser = {};
-  if (localUser != null) {
-    loggedUserData = JSON.parse(localUser);
-  }
+  const { users } = useUser();
 
   useEffect(() => {
     dispatch(fetchOrderItems());
@@ -30,11 +26,11 @@ function MyOrder() {
   return (
     <>
       <div className="w-3/4 py-5 text-center mt-20 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white">
-        <p>Name: {loggedUserData.name}</p>
-        <p>Email: {loggedUserData.email}</p>
-        <p>Role: {loggedUserData.role}</p>
-        <p>Password: {loggedUserData.password}</p>
-        <p>Date: {loggedUserData.date}</p>
+        <p>Name: {users.name}</p>
+        <p>Email: {users.email}</p>
+        <p>Role: {users.role}</p>
+        <p>Password: {users.password}</p>
+        <p>Date: {users.date}</p>
       </div>
 
       {status === "loading" && <Loader />}

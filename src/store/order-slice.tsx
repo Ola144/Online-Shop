@@ -97,7 +97,7 @@ export const createOrder =
 
     try {
       let user;
-      const localUser = localStorage.getItem("users");
+      const localUser = localStorage.getItem("onlineShopUsers");
       if (localUser != null) user = JSON.parse(localUser);
 
       const database = getDatabase();
@@ -158,7 +158,7 @@ export const fetchOrderItems = (): AppThunk => (dispatch: any) => {
   dispatch(fetchLoading());
 
   try {
-    const storedUser = localStorage.getItem("userId");
+    const storedUser = localStorage.getItem("onlineShopUserId");
     let userId;
     if (storedUser != null) {
       userId = JSON.parse(storedUser);

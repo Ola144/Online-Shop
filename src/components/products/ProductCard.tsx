@@ -7,15 +7,37 @@ import { useEffect } from "react";
 import { deleteProduct, fetchProduct } from "../../store/product-slice";
 import { useNavigate } from "react-router";
 import Loader from "../Loader";
+import { addLikeToDB, removerLikeFromDB } from "../../store/like-slice";
+import { useUser } from "../../context/UserContext";
 
 function ProductCard({ removeCartBtn, removeDeleteBtn }: any) {
   const { cartItems } = useSelector((state: RootState) => state.cart);
   const { productList, loading } = useSelector(
     (state: RootState) => state.product
   );
+  const { likeList } = useSelector((state: RootState) => state.like);
 
-  const dispatch = useDispatch<any>();
   const navigate = useNavigate();
+  const dispatch = useDispatch<any>();
+  const { userId } = useUser();
+
+  useEffect(() => {
+    dispatch(fetchProduct());
+
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [dispatch]);
+
+  const handleLike = (productId: string) => {
+    dispatch(addLikeToDB(productId));
+  };
+
+  const handleUnlike = () => {
+    let id: any;
+    likeList.find((item) => {
+      id = item.value.likeId;
+    });
+    dispatch(removerLikeFromDB(id));
+  };
 
   const addToCart = (item: any) => {
     // dispatch(cartActions.addTocart(item));
@@ -55,12 +77,6 @@ function ProductCard({ removeCartBtn, removeDeleteBtn }: any) {
     dispatch(deleteCartItem(id));
   };
 
-  useEffect(() => {
-    dispatch(fetchProduct());
-
-    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [dispatch]);
-
   return (
     <>
       {loading ? (
@@ -78,9 +94,29 @@ function ProductCard({ removeCartBtn, removeDeleteBtn }: any) {
                   alt={product.productName}
                   className="w-full rounded-md sm:h-60 h-80"
                 />
-                <p className="text-gray-500 text-sm text-left">
-                  {product.productCategory}
-                </p>
+                <div className="flex justify-between">
+                  <p className="text-gray-500 text-sm text-left">
+                    {product.productCategory}
+                  </p>
+                  <p className="text-xl text-red-500 font-black">
+                    {likeList.some(
+                      (like: any) =>
+                        like.value.productId === product.productId &&
+                        like.value.userId === userId
+                    ) ? (
+                      <i
+                        className="fa fa-heart cursor-pointer"
+                        onClick={() => handleUnlike()}
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa fa-heart-o cursor-pointer"
+                        onClick={() => handleLike(product.productId)}
+                      ></i>
+                    )}
+                  </p>
+                </div>
+
                 <div className="mt-2">
                   <h5 className="text-lg font-bold">{product.productName}</h5>
                   <p className="text-lg font-medium">${product.productPrice}</p>

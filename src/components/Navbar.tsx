@@ -16,7 +16,7 @@ const Navbar = () => {
   const navbarRef = useRef<any>(undefined);
   const shadowRef = useRef<any>(undefined);
 
-  const localUser = localStorage.getItem("users");
+  const localUser = localStorage.getItem("onlineShopUsers");
   let loggedUserData: IUser = {};
   if (localUser != null) {
     loggedUserData = JSON.parse(localUser);
@@ -25,8 +25,8 @@ const Navbar = () => {
   const logout = () => {
     dispatch(authActions.logout());
     navigate("/login");
-    localStorage.removeItem("users");
-    localStorage.removeItem("userId");
+    localStorage.removeItem("onlineShopUsers");
+    localStorage.removeItem("onlineShopUserId");
   };
 
   const toggleNavbar = () => {

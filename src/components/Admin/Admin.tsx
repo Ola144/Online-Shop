@@ -1,5 +1,4 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import type { IUser } from "../../model/User";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store";
 import AllOrder from "./AllOrder";
@@ -7,13 +6,10 @@ import AllUser from "./AllUser";
 import AllProduct from "./AllProduct/AllProduct";
 import ReviewCard from "../Review/ReviewCard";
 import AllContact from "./AllContact";
+import { useUser } from "../../context/UserContext";
 
 const Admin = () => {
-  const localUser = localStorage.getItem("users");
-  let loggedUserData: IUser = {};
-  if (localUser != null) {
-    loggedUserData = JSON.parse(localUser);
-  }
+  const { users } = useUser();
 
   const { allOrderItems } = useSelector((state: RootState) => state.order);
   const { userList } = useSelector((state: RootState) => state.user);
@@ -27,11 +23,11 @@ const Admin = () => {
         <h2>Admin Dashboard</h2>
       </div>
       <div className="w-3/4 py-5 text-center mt-2 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white font-serif border-4 border-gray-600">
-        <p>Name: {loggedUserData.name}</p>
-        <p>Email: {loggedUserData.email}</p>
-        <p>Role: {loggedUserData.role}</p>
-        <p>Password: {loggedUserData.password}</p>
-        <p>Date: {loggedUserData.date}</p>
+        <p>Name: {users?.name}</p>
+        <p>Email: {users?.email}</p>
+        <p>Role: {users?.role}</p>
+        <p>Password: {users?.password}</p>
+        <p>Date: {users?.date}</p>
       </div>
 
       <div className="w-full my-5">

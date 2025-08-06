@@ -14,11 +14,18 @@ import type { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { createCartItem, deleteCartItem } from "../../store/cart-slice-api";
+import { addLikeToDB, removerLikeFromDB } from "../../store/like-slice";
+import { useUser } from "../../context/UserContext";
 
 const LatestProduct = () => {
   const [product, setProduct] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { cartItems } = useSelector((state: RootState) => state.cart);
+  const { likeList } = useSelector((state: RootState) => state.like);
+
+  const dispatch = useDispatch<any>();
+  const navigate = useNavigate();
+  const { userId } = useUser();
 
   useEffect(() => {
     getLatestProduct();
@@ -49,8 +56,17 @@ const LatestProduct = () => {
     }
   };
 
-  const dispatch = useDispatch<any>();
-  const navigate = useNavigate();
+  const handleLike = (productId: string) => {
+    dispatch(addLikeToDB(productId));
+  };
+
+  const handleUnlike = () => {
+    let id: any;
+    likeList.find((item) => {
+      id = item.value.likeId;
+    });
+    dispatch(removerLikeFromDB(id));
+  };
 
   const addToCart = (item: any) => {
     dispatch(createCartItem(item));
@@ -92,9 +108,28 @@ const LatestProduct = () => {
                     alt={product.productName}
                     className="w-full rounded-md sm:h-60 h-80"
                   />
-                  <p className="text-gray-500 text-sm text-left">
-                    {product.productCategory}
-                  </p>
+                  <div className="flex justify-between">
+                    <p className="text-gray-500 text-sm text-left">
+                      {product.productCategory}
+                    </p>
+                    <p className="text-xl text-red-500 font-black">
+                      {likeList.some(
+                        (like: any) =>
+                          like.value.productId === product.productId &&
+                          like.value.userId === userId
+                      ) ? (
+                        <i
+                          className="fa fa-heart cursor-pointer"
+                          onClick={() => handleUnlike()}
+                        ></i>
+                      ) : (
+                        <i
+                          className="fa fa-heart-o cursor-pointer"
+                          onClick={() => handleLike(product.productId)}
+                        ></i>
+                      )}
+                    </p>
+                  </div>
                   <div className="mt-2">
                     <h5 className="text-lg font-bold">{product.productName}</h5>
                     <p className="text-lg font-medium">
