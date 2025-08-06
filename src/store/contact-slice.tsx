@@ -41,7 +41,7 @@ export const sendContact =
 
     try {
       let user;
-      const localUser = localStorage.getItem("users");
+      const localUser = localStorage.getItem("onlineShopUsers");
       if (localUser != null) user = JSON.parse(localUser);
 
       const contactRef = push(ref(database, "contacts"));
