@@ -147,7 +147,7 @@ export const createCartItem =
   (cartItemData: object): AppThunk =>
   async () => {
     let user;
-    const localUser = localStorage.getItem("users");
+    const localUser = localStorage.getItem("onlineShopUsers");
     if (localUser != null) user = JSON.parse(localUser);
 
     const database = getDatabase();

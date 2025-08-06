@@ -136,21 +136,38 @@ const Order = () => {
               )}
             </div>
             <div className="flex justify-end">
-              {loading ? (
+              {cartItems.length === 0 ? (
                 <button
-                  className=" bg-red-500 hover:bg-red-400 text-white py-2 px-3 rounded-lg"
-                  type="submit"
+                  className="bg-gray-400 hover:bg-gray-400 text-white py-2 px-3 rounded-lg cursor-no-drop"
+                  type="button"
+                  disabled
                 >
-                  Place Order
+                  Please, add item to the cart
                 </button>
               ) : (
-                <button
-                  className=" bg-gray-400 text-white py-2 px-3 rounded-lg flex justify-center items-center gap-1"
-                  type="submit"
-                >
-                  Loading{" "}
-                  <span className="size-5 border-4 border-gray-300 rounded-full border-t-4 border-t-blue-400 animate-spin"></span>
-                </button>
+                <>
+                  {loading ? (
+                    <button
+                      className={
+                        cartItems.length === 0
+                          ? "bg-gray-400 hover:bg-gray-400 text-white py-2 px-3 rounded-lg cursor-no-drop"
+                          : "bg-red-500 hover:bg-red-400 text-white py-2 px-3 rounded-lg"
+                      }
+                      type="submit"
+                      disabled={cartItems.length === 0}
+                    >
+                      Place Order
+                    </button>
+                  ) : (
+                    <button
+                      className=" bg-gray-400 text-white py-2 px-3 rounded-lg flex justify-center items-center gap-1"
+                      type="submit"
+                    >
+                      Loading{" "}
+                      <span className="size-5 border-4 border-gray-300 rounded-full border-t-4 border-t-blue-400 animate-spin"></span>
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </form>
