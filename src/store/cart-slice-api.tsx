@@ -115,8 +115,7 @@ export const fetchCartItems = (): AppThunk => (dispatch: any) => {
     });
 
     return unsubscribe;
-  } catch (error: any) {
-    toast.error(error.message);
+  } catch (_error: any) {
     dispatch(fetchNotLoading());
   }
 

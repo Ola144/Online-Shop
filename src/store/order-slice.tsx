@@ -178,8 +178,7 @@ export const fetchOrderItems = (): AppThunk => (dispatch: any) => {
     });
 
     return unsubscribe;
-  } catch (error: any) {
-    toast.error(error.message);
+  } catch (_error: any) {
     dispatch(fectchNotLoading());
   }
 };
