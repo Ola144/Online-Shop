@@ -24,14 +24,14 @@ const OrderCard = () => {
           onClick={() => dispatch(closeOrderCard())}
           className="bg-black/50 absolute top-0 left-0 w-full min-h-screen text-white z-40 flex justify-center items-center transition-al cursor-pointer"
         >
-          <div className="w-96 h-fit bg-white text-black text-center rounded-lg py-4 px-4">
-            <h2 className="font-bold text-xl mb-3">
+          <div className="w-72 md:w-96 h-fit bg-white text-black text-center rounded-lg py-4 px-4">
+            <h2 className="font-bold text-sm md:text-xl mb-3">
               Order Has Placed Successfully!!!
             </h2>
-            <p className="text-2xl text-red-500 font-bold">
+            <p className="text-sm md:text-xl text-red-500 font-bold">
               Thank you for your patronage.
             </p>
-            <p className="my-2 text-gray-500 text-muted">
+            <p className="my-2 text-gray-500 text-muted text-sm ">
               Click on button below to make payment of{" "}
               <span className="font-black text-red-500">
                 ${grandTotalPriceWithTax}

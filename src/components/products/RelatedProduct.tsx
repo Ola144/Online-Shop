@@ -53,11 +53,13 @@ const RelatedProduct = ({ categoryName }: any) => {
   };
 
   return (
-    <div className="w-full px-10 shadow-lg pt-2 pb-12">
+    <div className="w-full px-2 shadow-lg pt-2 pb-12">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl text-blue-600 font-bold">Related Products</h2>
+        <h2 className="text-lg md:text-2xl text-blue-600 font-bold">
+          Related Products
+        </h2>
         <button
-          className="underline text-blue-500 hover:underline-offset-0 text-lg font-bold"
+          className="underline text-blue-500 hover:underline-offset-0 text-xs md:text-lg font-bold"
           onClick={() => navigate("/products")}
         >
           View All Products
@@ -73,7 +75,7 @@ const RelatedProduct = ({ categoryName }: any) => {
           {loading ? (
             <Loader />
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 px-16 sm:px-0 md:px-0 gap-3 mt-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 px-0 sm:px-10 md:px-0 gap-3 mt-5">
               {relatedProductList.map((product: any) => {
                 return (
                   <div

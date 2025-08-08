@@ -6,10 +6,14 @@ import AllUser from "./AllUser";
 import AllProduct from "./AllProduct/AllProduct";
 import ReviewCard from "../Review/ReviewCard";
 import AllContact from "./AllContact";
-import { useUser } from "../../context/UserContext";
+import type { IUser } from "../../model/User";
 
 const Admin = () => {
-  const { users } = useUser();
+  const localUser = localStorage.getItem("onlineShopUsers");
+  let loggedUserData: IUser = {};
+  if (localUser != null) {
+    loggedUserData = JSON.parse(localUser);
+  }
 
   const { allOrderItems } = useSelector((state: RootState) => state.order);
   const { userList } = useSelector((state: RootState) => state.user);
@@ -19,20 +23,20 @@ const Admin = () => {
 
   return (
     <>
-      <div className="w-3/4 py-5 text-center mt-20 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white text-2xl font-serif border-4 border-gray-600">
+      <div className="w-3/4 py-5 text-center mt-20 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white text-xl md:text-2xl font-serif border-4 border-gray-600">
         <h2>Admin Dashboard</h2>
       </div>
-      <div className="w-3/4 py-5 text-center mt-2 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white font-serif border-4 border-gray-600">
-        <p>Name: {users?.name}</p>
-        <p>Email: {users?.email}</p>
-        <p>Role: {users?.role}</p>
-        <p>Password: {users?.password}</p>
-        <p>Date: {users?.date}</p>
+      <div className="w-3/4 py-5 text-center mt-2 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white font-serif text-xs sm:text-sm border-4 border-gray-600">
+        <p>Name: {loggedUserData.name}</p>
+        <p>Email: {loggedUserData.email}</p>
+        <p>Role: {loggedUserData.role}</p>
+        <p>Password: {loggedUserData.password}</p>
+        <p>Date: {loggedUserData.date}</p>
       </div>
 
       <div className="w-full my-5">
         <Tabs>
-          <TabList className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 gap-1 w-fit mx-auto">
+          <TabList className="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 gap-1 w-fit mx-auto">
             <Tab
               selectedClassName="activ-tab"
               className="cursor-pointer w-52 h-32 lg:w-40 md:w-42 py-2 text-center my-1 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white font-serif border-4 border-gray-600"

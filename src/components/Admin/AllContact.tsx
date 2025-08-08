@@ -15,8 +15,10 @@ const AllContact = () => {
   }, [dispatch]);
 
   return (
-    <div className="px-10 w-full my-10">
-      <h1 className="text-gray-500 font-black text-2xl my-4">All Feedback</h1>
+    <div className="w-full my-10">
+      <h1 className="text-gray-500 font-black text-xl ml-2 md:text-2xl my-4">
+        All Feedback
+      </h1>
       <div className="mx-auto w-full">
         {contactList.length === 0 ? (
           <>
@@ -29,7 +31,7 @@ const AllContact = () => {
             {loading ? (
               <Loader />
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mx-auto md:px-10 px-10 sm:px-5 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mx-auto md:px-10 px-5 sm:px-5 gap-5">
                 {contactList.map((item) => (
                   <div
                     key={item.contactId}

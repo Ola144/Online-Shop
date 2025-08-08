@@ -11,8 +11,8 @@ const AllUser = () => {
       {status === "loading" ? (
         <Loader />
       ) : (
-        <div className="overflow-x-auto my-5 mx-auto px-10">
-          <table className="w-full mb-10 table-auto mx-auto">
+        <div className="overflow-x-auto my-5 mx-auto px-5">
+          <table className="w-full mb-10 table-auto mx-auto text-sm">
             <thead className="border-2 border-gray-500 text-white bg-black py-10">
               <tr className="">
                 <th className="border-2 border-gray-500 px-1">S/N</th>

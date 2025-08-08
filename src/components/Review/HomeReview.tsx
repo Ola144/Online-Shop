@@ -42,17 +42,19 @@ const HomeReview = () => {
       {review.length === 0 ? (
         <></>
       ) : (
-        <div className="px-10">
+        <div className="mx-auto px-10">
           <div className="text-center mt-10 mb-5">
-            <h1 className="text-blue-500 font-black text-4xl">Testimonial</h1>
-            <h3 className="text-2xl font-bold">
+            <h1 className="text-blue-500 font-black text-sm md:text-lg">
+              Testimonial
+            </h1>
+            <h3 className="text-xs md:text-lg font-bold">
               What Our{" "}
               <span className="text-blue-500 font-black">Customers</span> Are
               Saying
             </h3>
             <div className="flex justify-end my-4">
               <button
-                className="underline text-blue-500 hover:underline-offset-0 text-lg font-bold"
+                className="underline text-blue-500 hover:underline-offset-0 text-xs md:text-lg font-bold"
                 onClick={() => navigate("/review")}
               >
                 View All Review
@@ -70,7 +72,7 @@ const HomeReview = () => {
                   </h1>
                 </>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 w-full mx-auto">
                   {review.map((item) => (
                     <div
                       key={item.$id}

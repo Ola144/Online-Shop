@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+body {
+  box-sizing: border-box;
+}
+
 .menuLink.active::after {
   content: "";
   position: absolute;
@@ -133,7 +137,7 @@
   }
 
   .search {
-    right: 90px !important;
+    right: 112px !important;
   }
 
   .newsLetterFormDiv {
@@ -156,7 +160,7 @@
     height: 100vh;
     position: absolute;
     top: 40px;
-    right: 24px;
+    right: 40px;
     display: none;
     transition: 0.3s ease-in-out;
   }
@@ -164,6 +168,8 @@
   .shadowBg.showShadow {
     display: block;
     transition: 0.3s ease-in-out;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .admin {
@@ -171,19 +177,21 @@
     padding-top: 20px;
     padding-right: 20px;
     top: 40px;
+    right: -40px;
   }
   .customer {
     background: white;
     padding-top: 20px;
     padding-right: 20px;
     top: 40px;
+    right: -40px;
   }
   .admin.hideMenuNav {
-    right: -340px !important;
+    right: -360px !important;
     transition: 0.3s ease-out all;
   }
   .customer.hideMenuNav {
-    right: -340px !important;
+    right: -360px !important;
     transition: 0.3s ease-out all;
   }
 

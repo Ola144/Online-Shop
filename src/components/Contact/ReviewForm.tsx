@@ -71,7 +71,7 @@ const ReviewForm = () => {
 
   return (
     <div className="w-full lg:w-96 contactForm md:mr-5">
-      <h1 className="text-2xl font-mono mb-3 font-bold">
+      <h1 className="text-lg md:text-xl font-mono mb-3 font-bold">
         WE LOVE TO HEAR FROM YOU
       </h1>
       <hr className="bg-gray-400 w-12 h-1" />

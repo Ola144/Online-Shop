@@ -61,7 +61,7 @@ const Signup = () => {
 
   return (
     <div className="flex justify-center items-center  bg-purple-300 h-screen">
-      <div className="w-96 bg-purple-700 text-white py-10 px-3 rounded-lg">
+      <div className="w-72 md:w-96 bg-purple-700 text-white py-10 px-3 rounded-lg">
         <h2 className="text-center text-4xl font-semibold">Signup</h2>
         <form onSubmit={handleSubmit(signupUser)} noValidate>
           <div className="my-3">
@@ -145,7 +145,7 @@ const Signup = () => {
             </button>
           )}
 
-          <p className="text-black font-bold text-lg mt-3">
+          <p className="text-black font-bold text-xs md:text-lg mt-3">
             Already have an account login{" "}
             <span className="text-white hover:underline">
               <NavLink to="/login">here</NavLink>

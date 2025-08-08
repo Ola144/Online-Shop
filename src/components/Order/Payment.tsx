@@ -1,6 +1,21 @@
 import GooglePayButton from "@google-pay/button-react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import type { RootState } from "../../store";
 
 const Payment = () => {
+  const navigate = useNavigate();
+  const { cartItems } = useSelector((state: RootState) => state.cart);
+
+  const totalPrice = cartItems
+    ?.map((item: any) => Number(item.productPrice) * item.productQty)
+    .reduce((prevValue: any, currValue: any) => prevValue + currValue, 0);
+
+  let grandTotalPriceWithTax: any = 0;
+
+  grandTotalPriceWithTax = (totalPrice + 100).toFixed(2);
+
   return (
     <GooglePayButton
       environment="TEST"
@@ -30,13 +45,15 @@ const Payment = () => {
         transactionInfo: {
           totalPriceStatus: "FINAL",
           totalPriceLabel: "Total",
-          totalPrice: "100.00",
+          totalPrice: grandTotalPriceWithTax,
           currencyCode: "USD",
           countryCode: "US",
         },
       }}
       onLoadPaymentData={(PaymentRequest) => {
         console.log("Load Payment Data!", PaymentRequest);
+        toast.success("Your payment is successfully!");
+        navigate("/products");
       }}
     />
   );

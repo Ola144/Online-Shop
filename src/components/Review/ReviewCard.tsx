@@ -22,8 +22,10 @@ const ReviewCard = ({ removeDeleteBtn }: any) => {
   return (
     <div className="px-10">
       <div className="text-center mt-10 mb-5">
-        <h1 className="text-blue-500 font-black text-4xl">Testimonial</h1>
-        <h3 className="text-2xl font-bold">
+        <h1 className="text-blue-500 font-black text-xl md:text-2xl">
+          Testimonial
+        </h1>
+        <h3 className="text-lg md:text-xl font-bold">
           What Our <span className="text-blue-500 font-black">Customers</span>{" "}
           Are Saying
         </h3>
@@ -43,14 +45,14 @@ const ReviewCard = ({ removeDeleteBtn }: any) => {
               {reviewList.map((review) => (
                 <div
                   key={review.$id}
-                  className="shadow-lg bg-white text-black p-3 text-center mx-auto w-full rounded-lg"
+                  className="shadow-lg bg-white text-black p-2 md:p-3 text-center mx-auto w-full rounded-lg"
                 >
                   <img
                     src={review.userImg}
                     alt={review.fullName}
-                    className="w-20 h-20 rounded-full mx-auto mb-1"
+                    className="w-12 h-12 md:w-20 md:h-20 rounded-full mx-auto mb-1"
                   />
-                  <p className="text-gray-600 font-black text-xl mb-2">
+                  <p className="text-gray-600 font-black text-lg md:text-xl mb-2">
                     {review.fullName}
                   </p>
                   <hr className="w-24 mt-6 h-1 bg-blue-600 mx-auto mb-4" />

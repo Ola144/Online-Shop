@@ -16,7 +16,7 @@ const AllOrder = () => {
   };
 
   return (
-    <div className="px-10">
+    <div className="px-5">
       {status === "loading" && <Loader />}
       {
         status === "failed" && <p>{errors}</p>
@@ -45,22 +45,22 @@ const AllOrder = () => {
                           {item.orders.map((order: any) => {
                             return (
                               <div
-                                className="flex items-start justify-center gap-3 m-auto lg:m-0 md:m-0 shadow-lg px-10 py-2 rounded-lg bg-gray-300 w-72"
+                                className="flex items-start justify-center gap-3 m-auto lg:m-0 md:m-0 shadow-lg px-5 py-2 rounded-lg bg-gray-300 w-60"
                                 key={order.cartId}
                               >
                                 <img
                                   src={order.productImgUrl}
                                   alt={order.productName}
-                                  className="w-32 h-32 rounded-lg"
+                                  className="w-24 h-24 rounded-lg"
                                 />
                                 <div className="">
-                                  <p className="text-white font-bold text-sm">
+                                  <p className="text-white font-bold text-xs">
                                     Name: {order.productName}
                                   </p>
-                                  <p className="text-white font-bold text-sm">
+                                  <p className="text-white font-bold text-xs">
                                     Price: ${order.productPrice}
                                   </p>
-                                  <p className="text-white font-bold text-sm">
+                                  <p className="text-white font-bold text-xs">
                                     Quantity: {order.productQty}
                                   </p>
                                 </div>
@@ -75,7 +75,7 @@ const AllOrder = () => {
                         <p>Delivery Fee: Free</p>
                         <p>Grand Total: ${item.grandTotal}</p>
                         <div className="mt-10 flex justify-end">
-                          {loading ? (
+                          {!loading ? (
                             <button
                               className=" bg-red-500 hover:bg-red-400 text-white py-2 px-3 rounded-lg"
                               type="button"

@@ -1,16 +1,16 @@
 const Newsletter = () => {
   return (
     <div className="w-full bg-no-repeat bg-cover h-full newsLetter pt-20 text-center">
-      <h1 className="font-black text-4xl text-wrap font-mono mb-10">
+      <h1 className="font-black text-lg md:text-3xl text-wrap font-mono mb-10">
         SIGN UP FOR OUR NEWSLETTER
       </h1>
       <div className="mx-auto my-12 newsLetterFormDiv" style={{ width: 400 }}>
         <input
           type="email"
-          className="outline-none bg-white text-gray-500 py-3 px-2 rounded-lg mb-1 w-full shadow-xl border-2 border-black placeholder:text-gray-500 placeholder:font-bold"
+          className="outline-none bg-white text-gray-500 py-3 px-2 rounded-lg mb-1 md:w-full w-60 shadow-xl border-2 border-black placeholder:text-gray-500 placeholder:font-bold"
           placeholder="Your Email Address"
         />
-        <button className="bg-black hover:bg-black/90 text-white w-full py-3 rounded-lg mt-1">
+        <button className="bg-black hover:bg-black/90 text-white w-60 md:w-full py-3 rounded-lg mt-1">
           Sign Up
         </button>
       </div>
@@ -24,7 +24,7 @@ const Newsletter = () => {
           <img src="assets/insta-item6.jpg" alt="Img" className="w-full" />
         </div>
         <div className="flex justify-center items-center">
-          <button className="w-56 text-white bg-black hover:bg-black/90 rounded-md py-2 px-5 absolute -bottom-3 ">
+          <button className="w-56 text-white text-sm md:text-lg bg-black hover:bg-black/90 rounded-md py-2 px-5 absolute -bottom-3 ">
             Follow Us Instagram
           </button>
         </div>

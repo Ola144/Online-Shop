@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { authActions } from "../store/auth-slice";
 import { useRef, useState } from "react";
 import type { AppDispatch, RootState } from "../store";
@@ -43,10 +43,13 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-white w-full text-black py-3 px-6 fixed top-0 left-0  shadow-lg  shadow-gray-500 z-30">
+    <div className="bg-white w-full text-black py-3 px-10 lg:px-20 fixed top-0 left-0  shadow-lg  shadow-gray-500 z-30">
       <div className="flex justify-between items-center relative">
         <div className="text-lg font-bold">
-          <h2>Online Shop</h2>
+          <h2>
+            {" "}
+            <Link to="/">Online Shop</Link>
+          </h2>
         </div>
         <div
           className="z-10 shadowBg cursor-pointer"
@@ -56,8 +59,8 @@ const Navbar = () => {
         <div
           className={
             loggedUserData.role === "Customer"
-              ? "md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen customer hideMenuNav"
-              : "md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen admin hideMenuNav"
+              ? "md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen customer hideMenuNav navDiv"
+              : "md:flex block gap-3 text-lg md:relative font-bold absolute md:top-0 bottom-0 z-20 -right-6 md:right-0 md:text-right  md:bg-none md:h-full w-80 text-right pr-4 h-screen admin hideMenuNav navDiv"
           }
           ref={navbarRef}
         >

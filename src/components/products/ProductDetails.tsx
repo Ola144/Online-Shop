@@ -154,7 +154,9 @@ const ProductDetails = () => {
                 </p>
               </div>
               <div className="text-gray-500 text-lg">
-                <p className="mb-2 font-black text-2xl">{item.productName} </p>
+                <p className="mb-2 font-black text-lg md:text-2xl">
+                  {item.productName}{" "}
+                </p>
                 <p className="mb-2">{item.productCategory} </p>
                 <p className="mb-2">${item.productPrice} </p>
                 <p className="mb-2 text-justify" style={{ lineHeight: 2 }}>

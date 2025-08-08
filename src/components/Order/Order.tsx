@@ -41,9 +41,9 @@ const Order = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <h1 className="my-4 text-xl font-bold font-mono">Your Order</h1>
-      <div className="shadow-lg p-4 rounded-lg bg-gray-300 w-full md:w-full lg:w-full lg:m-0 md:m-0">
+      <div className="shadow-lg p-4 rounded-lg bg-gray-300 w-full lg:m-0 md:m-0">
         <div className="flex justify-between items-center mb-4">
           <p className="text-white font-bold text-lg">Total Price:</p>
           <p className="text-white font-bold text-lg">${totalPrice}</p>
@@ -77,14 +77,17 @@ const Order = () => {
                   id="fullName"
                   className={
                     errors.fullName
-                      ? "py-3 px-2 bg-gray-400 text-white w-full border-2 border-red-500 rounded-md placeholder:text-white"
-                      : "py-3 px-2 bg-gray-400 text-white w-full border-2 border-gray-200 rounded-md placeholder:text-white"
+                      ? "py-1 px-2 bg-gray-400 text-white w-full border-2 border-red-500 rounded-md placeholder:text-white"
+                      : "py-1 px-2 bg-gray-400 text-white w-full border-2 border-gray-200 rounded-md placeholder:text-white placeholder:text-xs"
                   }
                   placeholder="Enter Full Name"
                   {...register("fullName", { required: true })}
                 />
                 {errors.fullName && (
-                  <span className="text-sm text-red-500">
+                  <span
+                    className="md:text-sm text-red-500"
+                    style={{ fontSize: 10 }}
+                  >
                     Full Name is a required field!
                   </span>
                 )}
@@ -96,8 +99,8 @@ const Order = () => {
                   id="phoneNo"
                   className={
                     errors.phoneNo
-                      ? "py-3 px-2 bg-gray-400 text-white w-full border-2 border-red-500 rounded-md placeholder:text-white"
-                      : "py-3 px-2 bg-gray-400 text-white w-full border-2 border-gray-200 rounded-md placeholder:text-white"
+                      ? "py-1 px-2 bg-gray-400 text-white w-full border-2 border-red-500 rounded-md placeholder:text-white"
+                      : "py-1 px-2 bg-gray-400 text-white w-full border-2 border-gray-200 rounded-md placeholder:text-white placeholder:text-xs"
                   }
                   placeholder="Enter Phone No."
                   {...register("phoneNo", {
@@ -109,7 +112,10 @@ const Order = () => {
                   })}
                 />
                 {errors.phoneNo && (
-                  <span className="text-sm text-red-500">
+                  <span
+                    className="md:text-sm text-red-500"
+                    style={{ fontSize: 10 }}
+                  >
                     Phone No. is a required field!
                   </span>
                 )}
@@ -123,14 +129,17 @@ const Order = () => {
                 id="address"
                 className={
                   errors.address
-                    ? "py-3 px-2 bg-gray-400 text-white w-full border-2 border-red-500 rounded-md placeholder:text-white"
-                    : "py-3 px-2 bg-gray-400 text-white w-full border-2 border-gray-200 rounded-md placeholder:text-white"
+                    ? "py-1 px-2 bg-gray-400 text-white w-full border-2 border-red-500 rounded-md placeholder:text-white"
+                    : "py-1 px-2 bg-gray-400 text-white w-full border-2 border-gray-200 rounded-md placeholder:text-white"
                 }
                 placeholder="Enter Address"
                 {...register("address", { required: true })}
               />
               {errors.address && (
-                <span className="text-sm text-red-500">
+                <span
+                  className="md:text-sm text-red-500"
+                  style={{ fontSize: 10 }}
+                >
                   Address is a required field!
                 </span>
               )}
@@ -146,7 +155,7 @@ const Order = () => {
                 </button>
               ) : (
                 <>
-                  {loading ? (
+                  {!loading ? (
                     <button
                       className={
                         cartItems.length === 0

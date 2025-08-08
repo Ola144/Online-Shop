@@ -82,7 +82,7 @@ function ProductCard({ removeCartBtn, removeDeleteBtn }: any) {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 px-16 sm:px-0 md:px-0 gap-3 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 px-0 sm:px-10 md:px-0 gap-3 mt-5">
           {productList.map((product) => {
             return (
               <div
@@ -92,7 +92,7 @@ function ProductCard({ removeCartBtn, removeDeleteBtn }: any) {
                 <img
                   src={product.productImgUrl}
                   alt={product.productName}
-                  className="w-full rounded-md sm:h-60 h-80"
+                  className="w-full rounded-md h-80"
                 />
                 <div className="flex justify-between">
                   <p className="text-gray-500 text-sm text-left">

@@ -20,11 +20,11 @@ const Search = ({ setSearchBar }: any) => {
   return (
     <div
       className="absolute top-1 md:top-2 z-50 transition-all search"
-      style={{ right: 110 }}
+      style={{ right: 125 }}
     >
       <input
         type="text"
-        className="w-80 border-2 border-black bg-gray-400 rounded-lg py-2 px-3 text-white placeholder:text-white"
+        className="w-52 md:w-80 border-2 border-black bg-gray-400 rounded-lg py-2 px-3 text-white placeholder:text-white"
         placeholder="Search by category..."
         onChange={(e: any) => {
           setSearchText(e.target.value);

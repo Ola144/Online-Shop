@@ -11,19 +11,19 @@ const Hero = () => {
 
   return (
     <>
-      <div className="w-full bg-gray-300">
+      <div className="bg-gray-300" style={{ width: "100%" }}>
         <div className="mx-auto hero">
           <div className="flex items-center justify-center flex-wrap sm:flex-nowrap hero-flex px-4 py-5 sm:gap-0 gap-4">
             <div className="text-center sm:text-left w-full">
-              <h1 className="font-bold text-5xl lg:text-5xl md:text-3xl sm:text-3xl ">
+              <h1 className="font-bold text-sm lg:text-5xl md:text-3xl sm:text-3xl ">
                 Welcome To <br />
                 Our Store
               </h1>
-              <p className="text-lg lg:text-lg sm:text-sm font-mono">
+              <p className="sm:text-lg lg:text-lg text-sm font-mono">
                 Discover a wide range of products <br /> at unbeatable prices.
               </p>
               <button
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold w-fit py-3 px-2 mt-3 rounded-lg"
+                className="bg-blue-500 hover:bg-blue-400 text-white font-bold w-fit py-2 px-2 mt-3 rounded-lg text-sm md:text-lg"
                 onClick={() => navigate("/products")}
               >
                 Shop Now
@@ -53,7 +53,7 @@ const Hero = () => {
                   alt={category.categoryName}
                   className="w-40 lg:w-28 md:h-20 h-10 mb-2 hover:shadow-sm"
                 />
-                <h5>{category.categoryName}</h5>
+                <h5 className="text-xs">{category.categoryName}</h5>
               </div>
             );
           })}

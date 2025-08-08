@@ -57,7 +57,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center bg-purple-300 min-h-screen">
-      <div className="w-96 bg-purple-700 text-white py-10 px-3 rounded-lg">
+      <div className="w-72 md:w-96 bg-purple-700 text-white py-10 px-3 rounded-lg">
         <h2 className="text-center text-4xl font-semibold">Login</h2>
         <form onSubmit={handleSubmit(loginUser)}>
           <div className="my-3">
@@ -122,7 +122,7 @@ const Login = () => {
             </button>
           )}
 
-          <p className="text-black font-bold text-lg mt-3">
+          <p className="text-black font-bold text-xs md:text-lg mt-3">
             Dont't have account yet signup{" "}
             <span className="text-white hover:underline">
               <NavLink to="/signup">here</NavLink>

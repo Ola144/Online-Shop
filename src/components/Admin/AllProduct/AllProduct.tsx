@@ -34,20 +34,20 @@ const AllProduct = () => {
       <div className="mt-10 pb-10 px-10 mx-auto">
         <div className="flex justify-end gap-1 mx-auto">
           <button
-            className="w-fit text-white bg-red-500 rounded-lg border-1 hover:bg-red-400 py-3 px-4"
+            className="w-fit text-white text-xs md:text-sm bg-red-500 rounded-lg border-1 hover:bg-red-400 py-2 px-2"
             onClick={() => showProductForm()}
           >
             Add Product
           </button>
           <button
-            className="w-fit text-white bg-red-500 rounded-lg border-1 hover:bg-red-400 py-3 px-4"
+            className="w-fit text-white text-xs md:text-sm bg-red-500 rounded-lg border-1 hover:bg-red-400 py-2 px-2"
             onClick={() => showCategoryForm()}
           >
             Add Category
           </button>
         </div>
       </div>
-      <div className=" px-10 py-5 bg-gray-50 mx-auto">
+      <div className=" px-5 py-5 bg-gray-50 mx-auto">
         <ProductCard removeCartBtn={removeCartBtn} />
       </div>
       {isShowProductForm && <ProductForm closeProductForm={closeProductForm} />}

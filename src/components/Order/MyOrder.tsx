@@ -29,7 +29,7 @@ function MyOrder() {
 
   return (
     <>
-      <div className="w-3/4 py-5 text-center mt-20 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white">
+      <div className="w-3/4 py-5 text-center mt-20 mx-auto bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg text-white text-sm md:text-lg">
         <p>Name: {loggedUserData.name}</p>
         <p>Email: {loggedUserData.email}</p>
         <p>Role: {loggedUserData.role}</p>
@@ -63,22 +63,22 @@ function MyOrder() {
                           {item.orders.map((order: any) => {
                             return (
                               <div
-                                className="flex items-start justify-center gap-3 m-auto lg:m-0 md:m-0 shadow-lg px-10 py-2 rounded-lg bg-gray-300 w-full"
+                                className="flex items-start justify-center gap-3 m-auto lg:m-0 md:m-0 shadow-lg px-5 py-2 rounded-lg bg-gray-300 w-60"
                                 key={order.cartId}
                               >
                                 <img
                                   src={order.productImgUrl}
                                   alt={order.productName}
-                                  className="w-32 h-32 rounded-lg"
+                                  className="w-20 h-20 rounded-lg"
                                 />
                                 <div className="">
-                                  <p className="text-white font-bold text-sm">
+                                  <p className="text-white font-bold text-xs">
                                     Name: {order.productName}
                                   </p>
-                                  <p className="text-white font-bold text-sm">
+                                  <p className="text-white font-bold text-xs">
                                     Price: ${order.productPrice}
                                   </p>
-                                  <p className="text-white font-bold text-sm">
+                                  <p className="text-white font-bold text-xs">
                                     Quantity: {order.productQty}
                                   </p>
                                 </div>
@@ -87,7 +87,7 @@ function MyOrder() {
                           })}
                         </div>
                       </div>
-                      <div className="col-span-1 md:col-span-1 md:border-l-2 border-l-gray-500 py-3 px-1 lg:w-full w-full bg-gray-400 text-white">
+                      <div className="col-span-1 md:col-span-1 md:border-l-2 border-l-gray-500 py-3 px-1 lg:w-full w-full bg-gray-400 text-white text-sm md:text-lg">
                         <p>Total Price: ${item.totalPrice}</p>
                         <p>Tax: $100</p>
                         <p>Delivery Fee: Free</p>

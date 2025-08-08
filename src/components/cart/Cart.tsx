@@ -45,7 +45,7 @@ const Cart = () => {
                 <>
                   {cartItems?.length === 0 ? (
                     <>
-                      <div className="text-center text-2xl md:text-2xl lg:text-4xl text-red-500 font-bold h-full">
+                      <div className="text-center text-lg md:text-2xl lg:text-4xl text-red-500 font-bold h-full">
                         <div>No Product Found In The Cart!</div>
                       </div>
                     </>
@@ -55,22 +55,22 @@ const Cart = () => {
                         {cartItems?.map((item: any) => {
                           return (
                             <div
-                              className="flex items-start justify-center gap-2 md:w-80 sm:w-full shadow-lg px-2 py-4 rounded-lg bg-gray-300 w-96 mx-auto md:mx-0"
+                              className="flex items-start justify-center gap-2 md:w-80 sm:w-full shadow-lg px-5 py-4 rounded-lg bg-gray-300 w-72 mx-auto md:mx-0"
                               key={item.cartId}
                             >
                               <img
                                 src={item.productImgUrl}
                                 alt={item.productName}
-                                className="w-32 h-32 rounded-lg"
+                                className="w-20 h-20 rounded-lg"
                               />
                               <div className="">
-                                <p className="text-white font-bold text-sm">
+                                <p className="text-white font-bold text-xs">
                                   Name: {item.productName}
                                 </p>
-                                <p className="text-white font-bold text-sm">
+                                <p className="text-white font-bold text-xs">
                                   Price: ${item.productPrice}
                                 </p>
-                                <p className="text-white font-bold md:text-sm sm:text-xs text-sm">
+                                <p className="text-white font-bold  text-xs">
                                   Quantity:{" "}
                                   <button
                                     className="w-auto px-2 py-1 bg-white text-black font-bold rounded-lg"
@@ -88,7 +88,7 @@ const Cart = () => {
                                 </p>
                                 <div className="flex justify-end my-2">
                                   <button
-                                    className="w-auto px-2 py-1 bg-red-500 text-white font-bold rounded-lg"
+                                    className="w-auto px-2 py-1 bg-red-500 text-white font-bold rounded-lg text-sm"
                                     onClick={() => removeCartItem(item.cartId)}
                                   >
                                     Remove
